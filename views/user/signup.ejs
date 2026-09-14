@@ -1,0 +1,71 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  .move_top {
+    display: none;
+  }
+
+  nav {
+    display: none !important;
+  }
+</style>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div
+      class="col-12 col-sm-10 col-md-8 col-lg-6 shadow-sm bg-body-tertiary rounded p-4"
+    >
+      <div class="row">
+        <h4 class="mb-4">Signup on WanderLust</h4>
+      </div>
+      <form action="/signup" method="post" class="needs-validation" novalidate>
+        <div class="row">
+          <div class="form-floating col-12 mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Email"
+              name="email"
+              required
+            />
+            <label for="floatingInput">Email Address</label>
+            <div class="invalid-feedback">Provide a valid email address</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-floating mb-3 col-12">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Username"
+              name="username"
+              required
+            />
+            <label for="floatingInput">Username</label>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Provide an username</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-floating col-12">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+              name="password"
+              required
+            />
+            <label for="floatingPassword">Password</label>
+            <div class="invalid-feedback">Please provide a secure password</div>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary col-10 mt-4 offset-1">Sign up</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  h3 {
+    text-align: center;
+  }
+  .move_top {
+    display: none;
+  }
+  fieldset {
+    margin: 0 auto;
+  }
+</style>
+<br />
+<h3>Edit your review here</h3>
+<br />
+<div class="container">
+  <form
+    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=PUT"
+    method="post"
+    class="needs-validation"
+    novalidate
+  >
+    <h3>Rate Us:</h3>
+    <fieldset class="starability-slot">
+      <input
+        type="radio"
+        id="no-rate"
+        class="input-no-rate"
+        name="rating"
+        value="0"
+        checked
+        aria-label="No rating."
+      />
+      <input type="radio" id="first-rate1" name="rating" value="1" />
+      <label for="first-rate1" title="Terrible"></label>
+      <input type="radio" id="first-rate2" name="rating" value="2" />
+      <label for="first-rate2" title="Not good"></label>
+      <input type="radio" id="first-rate3" name="rating" value="3" />
+      <label for="first-rate3" title="Average"></label>
+      <input type="radio" id="first-rate4" name="rating" value="4" />
+      <label for="first-rate4" title="Very good"></label>
+      <input type="radio" id="first-rate5" name="rating" value="5" />
+      <label for="first-rate5" title="Amazing"></label>
+    </fieldset>
+
+    <div class="form-floating">
+      <textarea
+        class="form-control"
+        name="comment"
+        placeholder="Leave a comment here"
+        id="floatingTextarea2"
+        style="height: 100px"
+        value="<%= review.comment %>"
+        required
+      ></textarea>
+      <label for="floatingTextarea2">Comments</label>
+      <div class="valid-feedback">Thanks for your Comment.</div>
+      <div class="invalid-feedback">Please add some comment for review</div>
+    </div>
+    <button class="btn btn-outline-secondary mt-4 mb-3 offset-5">
+      Edit Review
+    </button>
+  </form>
+</div>
+<hr class="border border-warning border-3 opacity-70" />

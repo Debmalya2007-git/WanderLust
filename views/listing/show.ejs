@@ -1,0 +1,167 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  footer {
+    position: static;
+  }
+  .btn-container {
+    margin-top: 1rem;
+  }
+  .review-cont {
+    width: 50vw;
+  }
+  .review-icons-cont{
+    display: flex;
+    justify-content: space-between;
+  }
+  .review-icons-cont button{
+    all:unset
+  }
+  .review-icons-cont i{
+    font-size: 20px;
+  }
+  .review-icons-cont button{
+    transition: all 0.8s ease-in 0s;
+  }
+  .review-icons-cont button:hover{
+    transform: scale(1.2);
+    cursor:pointer;
+  }
+  
+</style>
+
+  <div class="container offset-4 mt-4">
+    <div class="card">
+      <div class="row">
+        <div class="col-6">
+          <img
+            src="<%= listing.image.url %>"
+            class="card-img-top show-img"
+            alt="Show image"
+          />
+          <p>Owned by:- <b><%= listing.owner.username %></b></p>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <p class="card-text mt-2"><b><%= listing.title %></b></p>
+            <p class="card-text"><%= listing.description %></p>
+            <b class="card-text"
+              >Price: &#8377;<%= listing.price.toLocaleString("en-IN") %></b
+            >
+            <p class="card-text"><b><%= listing.location %></b></p>
+            <p class="card-text"><%= listing.country %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+<% if(currUser && currUser._id.equals(listing.owner._id)){ %>
+
+    <div class="row btn-container">
+      <div class="col-1">
+        <form action="/listings/<%= listing._id %>/edit" method="get">
+          <button class="btn btn-danger btn-sm">Edit</button>
+        </form>
+      </div>
+
+      <div class="col-1">
+        <form
+          action="/listings/<%= listing._id %>?_method=DELETE"
+          method="post"
+        >
+          <button class="btn btn-secondary btn-sm">Delete</button>
+        </form>
+      </div>
+    </div>
+  <% } %>
+  </div>
+  <br />
+
+  
+<% if(currUser){ %>
+      <hr class="border border-warning border-3 opacity-70" />
+  <div class="col-8 review-cont offset-4">
+    <h4>Leave a Review</h4>
+    <form
+      action="/listings/<%= listing._id %>/reviews"
+      method="post"
+      class="needs-validation"
+      novalidate
+    >
+      <h3>Rate Us:</h3>
+    <fieldset class="starability-slot">
+  <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+  <input type="radio" id="first-rate1" name="rating" value="1" />
+  <label for="first-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="first-rate2" name="rating" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="rating" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="rating" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="rating" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+
+
+      <div class="form-floating">
+        <textarea
+          class="form-control"
+          name="comment"
+          placeholder="Leave a comment here"
+          id="floatingTextarea2"
+          style="height: 100px"
+          required
+        ></textarea>
+        <label for="floatingTextarea2">Comments</label>
+        <div class="valid-feedback">Thanks for your Comment.</div>
+        <div class="invalid-feedback">Please add some comment for review</div>
+      </div>
+      <button class="btn btn-outline-success mt-4 mb-3">Submit</button>
+    </form>
+  </div>
+  <% } %>
+ 
+  <br />
+  <hr class="border border-success border-3 opacity-70" />
+  <div class="container">
+    
+    <% if(listing.reviews.length!=0){ %>
+   <div class="row"><h3>All Reviews</h3></div>
+    <div class="row row-cols-2">
+      <% for(let review of listing.reviews){ %>
+        <div class="col-5 shadow-sm p-3 mb-4 bg-body-tertiary rounded ms-4">
+          <b><%= review.author.username %></b>
+          <!-- <h5><%= review.rating %> <i class="bi bi-star-fill"></i></h5> -->
+           <p class="starability-result" data-rating="<%= review.rating %>" ></p>
+          <p><%= review.comment %></p>
+          
+          <% if(currUser && currUser.equals(review.author)){ %>
+          <div class="review-icons-cont">
+            <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>/edit" method="get"><button><i class="bi bi-pencil-square"></i></button></form>
+            <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post"><button><i class="bi bi-trash3"></i></button></form>
+          </div>
+          <% } %>
+        </div>
+      <% } %> 
+    </div>
+  <% } %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-5"><h3>Where you'll be</h3></div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div
+        id="map"
+        data-coordinates='<%- JSON.stringify(listing.geometry.coordinates) %>'
+        data-listing='<%- JSON.stringify({ title: listing.title, location: listing.location, country: listing.country, price: listing.price }) %>'
+        style="width: 100%; height: 500px"
+      ></div>
+    </div>
+    
+  </div>
+</div>

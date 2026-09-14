@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WanderLust</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/128/10828/10828620.png"
+      type="image/png"
+    />
+    <!-- Bootstrap Icons link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- Bootstrap CSS link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!-- FontAwesome CDN link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Maplibre CSS link -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.css"
+    />
+    <!-- Maplibre JS link -->
+    <script src="https://unpkg.com/maplibre-gl@5/dist/maplibre-gl.js"></script>
+
+    <!-- Vanilla CSS -->
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="stylesheet" href="/CSS/rating.css" />
+  </head>
+  <body>
+    <%- include("../includes/navbar.ejs") %> <%-
+    include("../includes/flash.ejs") %>
+
+    <!-- Ejs Mate code written -->
+    <%- body %> <%- include("../includes/footer.ejs") %>
+    <!-- Bootstrap JS link -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/JS/script.js"></script>
+    <script src="/JS/map.js"></script>
+    <script src="/JS/search.js"></script>
+  </body>
+</html>

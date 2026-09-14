@@ -1,0 +1,338 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    .options{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 1.1rem;
+    }
+    .option{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* margin-right: 1.8rem; */
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    .option:hover{
+        opacity:1;
+    }
+
+    .option p{
+        font-size: 0.9rem;
+    }
+
+    #switchCheckReverse,
+    #switchCheckReverseLevel {
+        cursor: pointer;
+    }
+
+    .tax-displayer {
+        display: none;
+    }
+
+    .tax-show {
+        display: inline;
+    }
+
+    .tax-toggle{
+        display: inline-block;
+        border: 2px solid rgb(141, 134, 134);
+        padding: 0.4rem;
+        padding-right: 3rem !important;
+        padding-left: 1rem !important;
+        border-radius: 0.9rem;
+    }
+
+    .tax-toggle:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .filter{
+        background-color: #fff; 
+        color: #000;            
+        padding: 10px 15px;
+        font-size: 18px;
+        border: 2px solid rgb(156, 143, 143);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .filter:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .filter option{
+        background-color: #fff; 
+        color: #000;
+    }
+
+    .widget{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 4px;
+    }
+
+    .hamburger-icon{
+        font-size: 28px;
+        margin-left: 10px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .cross-icon{
+        display: none;
+    }
+
+    .left-container{
+        display: none;
+    }
+
+    @media  (max-width:900px){
+        .hamburger-icon{
+            display: block;
+        }
+        .options{
+            display: none;
+        }
+
+        .left-container{
+            display: flex;
+            flex-direction: column;
+            display: none;
+        }
+
+        .option{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.6rem 0 0.6rem 0.5rem;
+        }
+        .option:hover{
+            cursor: pointer;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .option i{
+            font-size: 1rem;
+        }
+
+        .option p{
+            margin:0;
+            font-size: 1rem;  
+        }
+
+        .option{
+            opacity: 0.7;
+        }
+        .option :hover{
+            opacity: 1;
+        }   
+        .cross-icon{
+            margin-right: 1rem;
+            font-size: 28px;
+            cursor: pointer;
+            display: none;
+        }
+    }
+    .icons{
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+<div class="icons">
+    <i class="bi bi-list hamburger-icon"></i>
+    <i class="bi bi-x-square cross-icon"></i>
+</div>
+    <div class="options">
+        <div class="option">
+            <div><i class="bi bi-fire"></i></div>
+            <p>Trending</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-house-door-fill"></i></div>
+            <p>Rooms</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-buildings-fill"></i></div>
+            <p>Iconic cities</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-balloon-fill"></i></div>
+            <p>Experiences</p>
+        </div>
+        
+        <div class="option">
+            <div><i class="bi bi-fork-knife"></i></div>
+            <p>Fooding</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-fuel-pump-fill"></i></div>
+            <p>Fuel Stations</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-bag-check-fill"></i></div>
+            <p>Shopping</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-airplane-fill"></i></div>
+            <p>Transport</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-cup-hot-fill"></i></div>
+            <p>Add dishes</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-camera-fill"></i></div>
+            <p>Site Scenes</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-search"></i></div>
+            <p>Your bookings</p>
+        </div>
+        
+        <div class="option">
+            <div><i class="bi bi-browser-safari"></i></div>
+            <p>Your listings</p>
+        </div>
+    </div>
+
+    <div class="left-container">
+        <div class="option">
+            <div><i class="bi bi-fire"></i></div>
+            <p>Trending</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-house-door-fill"></i></div>
+            <p>Rooms</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-buildings-fill"></i></div>
+            <p>Iconic cities</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-balloon-fill"></i></div>
+            <p>Experiences</p>
+        </div>
+        
+        <div class="option">
+            <div><i class="bi bi-fork-knife"></i></div>
+            <p>Fooding</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-fuel-pump-fill"></i></div>
+            <p>Fuel Stations</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-bag-check-fill"></i></div>
+            <p>Shopping</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-airplane-fill"></i></div>
+            <p>Transport</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-cup-hot-fill"></i></div>
+            <p>Add dishes</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-camera-fill"></i></div>
+            <p>Site Scenes</p>
+        </div>
+
+        <div class="option">
+            <div><i class="bi bi-search"></i></div>
+            <p>Your bookings</p>
+        </div>
+        
+        <div class="option">
+            <div><i class="bi bi-browser-safari"></i></div>
+            <p>Your listings</p>
+        </div>
+    </div>
+
+    <div class="widget">
+        
+         <div class="form-check form-switch form-check-reverse tax-toggle">
+            <input class="form-check-input" type="checkbox" id="switchCheckReverse">
+            <label class="form-check-label" for="switchCheckReverse" id="switchCheckReverseLevel">Show price with taxes</label>
+        </div>
+
+        <form action="/filter" method="get" class="filter-form">
+            <select name="filter" id="filter" class="filter">
+                <option value="">Filter your listings</option>
+                <option value="Mountains" name="Mountains">Mountains</option>
+                <option value="Arctic" name="Arctic">Arctic</option>
+                <option value="Farms" name="Farms">Farms</option>
+                <option value="Desert" name="Desert">Desert</option>
+            </select>
+            <button class="btn btn-outline-dark mb-1 filter-button"><i class="bi bi-funnel"></i>&nbsp;Filter</button>
+        </form>    
+        
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 list-cont row-list">
+        <% for(let listing of listings){ %>
+
+    <a href="/listings/<%= listing._id %>">
+        <div class="card  shadow-sm p-0 mb-5 bg-body-tertiary rounded" style="width: 20rem;">
+    <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
+    <div class="card-body">
+    <h6 class="card-title"><%= listing.title %></h6>
+    <div class="card-text-cont">
+        <p class="card-text">&#8377;<%= listing.price.toLocaleString("en-IN")%>/night<i class="tax-displayer">+18% GST</i></p>
+    <p class="card-text"><%= listing.location %></p>
+        </div>
+       </div>
+    </div>
+    </a>
+
+ <% } %>
+    </div>
+
+<script>
+    let taxToggler=document.querySelector("#switchCheckReverse");
+    let taxDisplayers=document.querySelectorAll(".tax-displayer");
+    taxToggler.addEventListener("click",()=>{
+        for(let taxDisplayer of taxDisplayers){
+            taxDisplayer.classList.toggle("tax-show")
+        }
+    });
+
+    let leftContainer= document.querySelector(".left-container");
+    let hamBtn=document.querySelector(".hamburger-icon");
+    let crossBtn=document.querySelector(".cross-icon");
+    hamBtn.addEventListener("click",()=>{
+        leftContainer.style.display="block";
+        crossBtn.style.display="block";
+        hamBtn.style.display="none";
+    });
+    crossBtn.addEventListener("click",()=>{
+        leftContainer.style.display="none";
+        crossBtn.style.display="none";
+        hamBtn.style.display="block";
+    })
+
+</script>
+
